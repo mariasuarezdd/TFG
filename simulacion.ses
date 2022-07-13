@@ -1,0 +1,783 @@
+{load_file("nrngui.hoc")}
+objectvar save_window_, rvp_
+objectvar scene_vector_[11]
+objectvar ocbox_, ocbox_list_, scene_, scene_list_
+{ocbox_list_ = new List()  scene_list_ = new List()}
+{pwman_place(0,0,0)}
+
+//Begin CellBuild[0]
+{
+load_file("celbild.hoc", "CellBuild")
+}
+{ocbox_ = new CellBuild(1)}
+{object_push(ocbox_)}
+{
+version(5.7)
+continuous = 0
+}
+{object_push(topol)}
+{
+first = 0
+slist.remove_all()
+sname = "axon"
+objref tobj
+}
+{
+tobj = new CellBuildSection("soma",0, 0, tobj, 0) slist.append(tobj)
+  tobj.position(0,0,15,0) tobj.lx=12.5506 tobj.ly=27.2334 tobj.i3d=0
+tobj = new CellBuildSection("dend",0, 0, tobj, 1) slist.append(tobj)
+tobj.parent=slist.object(0)
+  tobj.position(15,0,90,0) tobj.lx=56.2753 tobj.ly=-14.0621 tobj.i3d=0
+tobj = new CellBuildSection("axon",0, 0, tobj, 0) slist.append(tobj)
+tobj.parent=slist.object(0)
+  tobj.position(0,0,-90,0) tobj.lx=-46.9636 tobj.ly=-6.77464 tobj.i3d=0
+all_init()
+}
+for i=0, slist.count-1 {slist.object(i).rdses()}
+{object_pop()}
+{
+}
+{object_push(subsets)}
+{first = 0}
+{ tobj = snlist.object(0)}
+{consist()}
+{object_pop()}
+{
+}
+{object_push(geom)}
+{
+first = 0
+tobj = new GeoSpec(0, bild.subsets.snlist.object(0))
+for i=0, 2 {tobj.snlist.list.object(i).ldiaminfo.x[0] = fscan()}}
+30
+1000
+1000
+{
+bild.subsets.snlist.object(0).geo.append(tobj)
+tobj = new GeoSpec(1, bild.subsets.snlist.object(0))
+for i=0, 2 {tobj.snlist.list.object(i).ldiaminfo.x[1] = fscan()}}
+30
+2
+1
+{
+bild.subsets.snlist.object(0).geo.append(tobj)
+tobj = new GeoSpec(7)
+tobj.value = 0.1
+bild.subsets.snlist.object(0).geo.append(tobj)
+set_default()
+}
+{object_pop()}
+{
+}
+{object_push(memb)}
+{first=0}
+{
+tobj = new FakeMechStan(0)
+tobj.value = 160
+tobj.set_default()
+tobj = new MStanWrap(tobj, 0)
+bild.subsets.snlist.object(0).ml.append(tobj)
+}
+{
+tobj = new FakeMechStan(1)
+tobj.value = 1
+tobj.set_default()
+tobj = new MStanWrap(tobj, 0)
+bild.subsets.snlist.object(0).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("hh")
+tobj.set("gnabar_hh", 0.12, 0)
+tobj.set("gkbar_hh", 0.036, 0)
+tobj.set("gl_hh", 0.0003, 0)
+tobj.set("el_hh", -54.3, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.topol.slist.object(0).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("pas")
+tobj.set("g_pas", 6.6667e-05, 0)
+tobj.set("e_pas", -65, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.topol.slist.object(1).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("hh")
+tobj.set("gnabar_hh", 0.12, 0)
+tobj.set("gkbar_hh", 0.036, 0)
+tobj.set("gl_hh", 0.0003, 0)
+tobj.set("el_hh", -54.3, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.topol.slist.object(2).ml.append(tobj)
+}
+{object_pop()}
+{
+}
+{object_push(manage)}
+{
+first = 0
+classname = "Cell"
+etop=1 esub=1 egeom=1 emem=1
+itop=1 isub=0 igeom=0 imem=0
+bild.topol.names_off = 0
+bild.topol.circles_off = 0
+output_index = 0  output_x = 1
+thresh = 10
+}
+{object_pop()}
+{
+cexport()
+}
+{object_pop()}
+{
+save_window_=ocbox_.gtopol
+save_window_.size(-200,200,-150,150)
+scene_vector_[2] = save_window_
+ocbox_.gtopol = save_window_
+save_window_.save_name("ocbox_.gtopol")
+}
+{
+ocbox_.map("CellBuild[0]", 24, 90, 258.24, 15.36)
+}
+objref ocbox_
+//End CellBuild[0]
+
+
+//Begin CellBuild[1]
+{
+load_file("celbild.hoc", "CellBuild")
+}
+{ocbox_ = new CellBuild(1)}
+{object_push(ocbox_)}
+{
+version(5.7)
+continuous = 0
+}
+{object_push(topol)}
+{
+first = 0
+slist.remove_all()
+sname = "dend"
+objref tobj
+}
+{
+tobj = new CellBuildSection("soma",0, 0, tobj, 0) slist.append(tobj)
+  tobj.position(0,0,15,0) tobj.lx=5.26314 tobj.ly=-20.135 tobj.i3d=0
+all_init()
+}
+for i=0, slist.count-1 {slist.object(i).rdses()}
+{object_pop()}
+{
+}
+{object_push(subsets)}
+{first = 0}
+{ tobj = snlist.object(0)}
+{consist()}
+{object_pop()}
+{
+}
+{object_push(geom)}
+{
+first = 0
+tobj = new GeoSpec(0, bild.subsets.snlist.object(0))
+for i=0, 0 {tobj.snlist.list.object(i).ldiaminfo.x[0] = fscan()}}
+10
+{
+bild.subsets.snlist.object(0).geo.append(tobj)
+tobj = new GeoSpec(1, bild.subsets.snlist.object(0))
+for i=0, 0 {tobj.snlist.list.object(i).ldiaminfo.x[1] = fscan()}}
+10
+{
+bild.subsets.snlist.object(0).geo.append(tobj)
+tobj = new GeoSpec(7)
+tobj.value = 0.1
+bild.subsets.snlist.object(0).geo.append(tobj)
+set_default()
+}
+{object_pop()}
+{
+}
+{object_push(memb)}
+{first=0}
+{
+tobj = new FakeMechStan(0)
+tobj.value = 160
+tobj.set_default()
+tobj = new MStanWrap(tobj, 0)
+bild.subsets.snlist.object(0).ml.append(tobj)
+}
+{
+tobj = new FakeMechStan(1)
+tobj.value = 1
+tobj.set_default()
+tobj = new MStanWrap(tobj, 0)
+bild.subsets.snlist.object(0).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("hh")
+tobj.set("gnabar_hh", 0.12, 0)
+tobj.set("gkbar_hh", 0.036, 0)
+tobj.set("gl_hh", 0.0003, 0)
+tobj.set("el_hh", -54.3, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.topol.slist.object(0).ml.append(tobj)
+}
+{object_pop()}
+{
+}
+{object_push(manage)}
+{
+first = 0
+classname = "Cell"
+etop=1 esub=1 egeom=1 emem=1
+itop=1 isub=0 igeom=0 imem=0
+bild.topol.names_off = 0
+bild.topol.circles_off = 0
+output_index = 0  output_x = 1
+thresh = 10
+}
+{object_pop()}
+{
+cexport()
+}
+{object_pop()}
+{
+save_window_=ocbox_.gtopol
+save_window_.size(-200,200,-150,150)
+scene_vector_[3] = save_window_
+ocbox_.gtopol = save_window_
+save_window_.save_name("ocbox_.gtopol")
+}
+{
+ocbox_.map("CellBuild[1]", 21, 132, 261.12, 15.36)
+}
+objref ocbox_
+//End CellBuild[1]
+
+
+//Begin ArtCellGUI[0]
+{
+load_file("netbild.hoc")
+}
+ocbox_ = new ArtCellGUI(1)
+{object_push(ocbox_)}
+{
+tobj = new MechanismStandard("NetStim")
+tobj.set("interval", 2, 0)
+tobj.set("number", 10000, 0)
+tobj.set("start", 5, 0)
+tobj.set("noise", 0, 0)
+}
+{append(tobj, "S")}
+{object_pop()}
+{
+ocbox_.map("ArtCellGUI[0]", 21, 171, 218.88, 49.92)
+}
+objref ocbox_
+//End ArtCellGUI[0]
+
+
+//Begin SynTypeGUI[0]
+{
+load_file("netbild.hoc")
+}
+ocbox_ = new SynTypeGUI(1)
+{object_push(ocbox_)}
+{
+tobj = new MechanismStandard("ExpSyn")
+tobj.set("tau", 3, 0)
+tobj.set("e", 0, 0)
+}
+{append(tobj, "E")}
+{
+tobj = new MechanismStandard("Exp2Syn")
+tobj.set("tau1", 3, 0)
+tobj.set("tau2", 10, 0)
+tobj.set("e", -67, 0)
+}
+{append(tobj, "I")}
+{object_pop()}
+{
+ocbox_.map("SynTypeGUI[0]", 18, 248, 221.76, 66.24)
+}
+objref ocbox_
+//End SynTypeGUI[0]
+
+
+//Begin SynTypeGUI[1]
+{
+load_file("netbild.hoc")
+}
+ocbox_ = new SynTypeGUI(1)
+{object_push(ocbox_)}
+{
+tobj = new MechanismStandard("ExpSyn")
+tobj.set("tau", 3, 0)
+tobj.set("e", 0, 0)
+}
+{append(tobj, "E")}
+{object_pop()}
+{
+ocbox_.map("SynTypeGUI[1]", 18, 339, 223.68, 74.88)
+}
+objref ocbox_
+//End SynTypeGUI[1]
+
+
+//Begin NetReadyCellGUI[0]
+{
+load_file("netbild.hoc")
+}
+{ocbox_ = new NetReadyCellGUI(1)}
+{ocbox_.tobj = new CellBuild(1)}
+{object_push(ocbox_.tobj)}
+{
+version(5.7)
+continuous = 0
+}
+{object_push(topol)}
+{
+first = 0
+slist.remove_all()
+sname = "axon"
+objref tobj
+}
+{
+tobj = new CellBuildSection("soma",0, 0, tobj, 0) slist.append(tobj)
+  tobj.position(0,0,15,0) tobj.lx=12.5506 tobj.ly=27.2334 tobj.i3d=0
+tobj = new CellBuildSection("dend",0, 0, tobj, 1) slist.append(tobj)
+tobj.parent=slist.object(0)
+  tobj.position(15,0,90,0) tobj.lx=56.2753 tobj.ly=-14.0621 tobj.i3d=0
+tobj = new CellBuildSection("axon",0, 0, tobj, 0) slist.append(tobj)
+tobj.parent=slist.object(0)
+  tobj.position(0,0,-90,0) tobj.lx=-46.9636 tobj.ly=-6.77464 tobj.i3d=0
+all_init()
+}
+for i=0, slist.count-1 {slist.object(i).rdses()}
+{object_pop()}
+{
+}
+{object_push(subsets)}
+{first = 0}
+{ tobj = snlist.object(0)}
+{consist()}
+{object_pop()}
+{
+}
+{object_push(geom)}
+{
+first = 0
+tobj = new GeoSpec(0, bild.subsets.snlist.object(0))
+for i=0, 2 {tobj.snlist.list.object(i).ldiaminfo.x[0] = fscan()}}
+30
+1000
+1000
+{
+bild.subsets.snlist.object(0).geo.append(tobj)
+tobj = new GeoSpec(1, bild.subsets.snlist.object(0))
+for i=0, 2 {tobj.snlist.list.object(i).ldiaminfo.x[1] = fscan()}}
+30
+2
+1
+{
+bild.subsets.snlist.object(0).geo.append(tobj)
+tobj = new GeoSpec(7)
+tobj.value = 0.1
+bild.subsets.snlist.object(0).geo.append(tobj)
+set_default()
+}
+{object_pop()}
+{
+}
+{object_push(memb)}
+{first=0}
+{
+tobj = new FakeMechStan(0)
+tobj.value = 160
+tobj.set_default()
+tobj = new MStanWrap(tobj, 0)
+bild.subsets.snlist.object(0).ml.append(tobj)
+}
+{
+tobj = new FakeMechStan(1)
+tobj.value = 1
+tobj.set_default()
+tobj = new MStanWrap(tobj, 0)
+bild.subsets.snlist.object(0).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("hh")
+tobj.set("gnabar_hh", 0.12, 0)
+tobj.set("gkbar_hh", 0.036, 0)
+tobj.set("gl_hh", 0.0003, 0)
+tobj.set("el_hh", -54.3, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.topol.slist.object(0).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("pas")
+tobj.set("g_pas", 6.6667e-05, 0)
+tobj.set("e_pas", -65, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.topol.slist.object(1).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("hh")
+tobj.set("gnabar_hh", 0.12, 0)
+tobj.set("gkbar_hh", 0.036, 0)
+tobj.set("gl_hh", 0.0003, 0)
+tobj.set("el_hh", -54.3, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.topol.slist.object(2).ml.append(tobj)
+}
+{object_pop()}
+{
+}
+{object_push(manage)}
+{
+first = 0
+classname = "Cell"
+etop=1 esub=1 egeom=1 emem=1
+itop=1 isub=0 igeom=0 imem=0
+bild.topol.names_off = 0
+bild.topol.circles_off = 0
+output_index = 0  output_x = 1
+thresh = 10
+}
+{object_pop()}
+{
+cexport()
+}
+{object_pop()}
+{
+save_window_=ocbox_.tobj.gtopol
+save_window_.size(-200,200,-150,150)
+scene_vector_[5] = save_window_
+ocbox_.tobj.gtopol = save_window_
+save_window_.save_name("ocbox_.tobj.gtopol")
+}
+{object_push(ocbox_)}
+stgui = new SynTypeGUI(1)
+{object_push(stgui)}
+{
+tobj = new MechanismStandard("ExpSyn")
+tobj.set("tau", 3, 0)
+tobj.set("e", 0, 0)
+}
+{append(tobj, "E")}
+{
+tobj = new MechanismStandard("Exp2Syn")
+tobj.set("tau1", 3, 0)
+tobj.set("tau2", 10, 0)
+tobj.set("e", -67, 0)
+}
+{append(tobj, "I")}
+{object_pop()}
+nrc = new NetReadyCell(tobj, stgui.stypelist)
+nrc.name = "M"
+tobj = nrc.cb.topol.slist.object(1)
+{nrc.synlist.append(new SynTypeInstance(nrc.stype.object[0],tobj,0.2,0.5,-1))}
+tobj = nrc.cb.topol.slist.object(0)
+{nrc.synlist.append(new SynTypeInstance(nrc.stype.object[1],tobj,0.5,0.5,3))}
+{g.size(-174.322,174.322,-9.53004,9.53004)}
+{object_pop()}
+{
+ocbox_.map("NetReadyCellGUI[0]", 14, 654, 194.88, 72)
+}
+objref ocbox_
+//End NetReadyCellGUI[0]
+
+
+//Begin NetReadyCellGUI[1]
+{
+load_file("netbild.hoc")
+}
+{ocbox_ = new NetReadyCellGUI(1)}
+{ocbox_.tobj = new CellBuild(1)}
+{object_push(ocbox_.tobj)}
+{
+version(5.7)
+continuous = 0
+}
+{object_push(topol)}
+{
+first = 0
+slist.remove_all()
+sname = "dend"
+objref tobj
+}
+{
+tobj = new CellBuildSection("soma",0, 0, tobj, 0) slist.append(tobj)
+  tobj.position(0,0,15,0) tobj.lx=5.26314 tobj.ly=-20.135 tobj.i3d=0
+all_init()
+}
+for i=0, slist.count-1 {slist.object(i).rdses()}
+{object_pop()}
+{
+}
+{object_push(subsets)}
+{first = 0}
+{ tobj = snlist.object(0)}
+{consist()}
+{object_pop()}
+{
+}
+{object_push(geom)}
+{
+first = 0
+tobj = new GeoSpec(0, bild.subsets.snlist.object(0))
+for i=0, 0 {tobj.snlist.list.object(i).ldiaminfo.x[0] = fscan()}}
+10
+{
+bild.subsets.snlist.object(0).geo.append(tobj)
+tobj = new GeoSpec(1, bild.subsets.snlist.object(0))
+for i=0, 0 {tobj.snlist.list.object(i).ldiaminfo.x[1] = fscan()}}
+10
+{
+bild.subsets.snlist.object(0).geo.append(tobj)
+tobj = new GeoSpec(7)
+tobj.value = 0.1
+bild.subsets.snlist.object(0).geo.append(tobj)
+set_default()
+}
+{object_pop()}
+{
+}
+{object_push(memb)}
+{first=0}
+{
+tobj = new FakeMechStan(0)
+tobj.value = 160
+tobj.set_default()
+tobj = new MStanWrap(tobj, 0)
+bild.subsets.snlist.object(0).ml.append(tobj)
+}
+{
+tobj = new FakeMechStan(1)
+tobj.value = 1
+tobj.set_default()
+tobj = new MStanWrap(tobj, 0)
+bild.subsets.snlist.object(0).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("hh")
+tobj.set("gnabar_hh", 0.12, 0)
+tobj.set("gkbar_hh", 0.036, 0)
+tobj.set("gl_hh", 0.0003, 0)
+tobj.set("el_hh", -54.3, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.topol.slist.object(0).ml.append(tobj)
+}
+{object_pop()}
+{
+}
+{object_push(manage)}
+{
+first = 0
+classname = "Cell"
+etop=1 esub=1 egeom=1 emem=1
+itop=1 isub=0 igeom=0 imem=0
+bild.topol.names_off = 0
+bild.topol.circles_off = 0
+output_index = 0  output_x = 1
+thresh = 10
+}
+{object_pop()}
+{
+cexport()
+}
+{object_pop()}
+{
+save_window_=ocbox_.tobj.gtopol
+save_window_.size(-200,200,-150,150)
+scene_vector_[7] = save_window_
+ocbox_.tobj.gtopol = save_window_
+save_window_.save_name("ocbox_.tobj.gtopol")
+}
+{object_push(ocbox_)}
+stgui = new SynTypeGUI(1)
+{object_push(stgui)}
+{
+tobj = new MechanismStandard("ExpSyn")
+tobj.set("tau", 3, 0)
+tobj.set("e", 0, 0)
+}
+{append(tobj, "E")}
+{object_pop()}
+nrc = new NetReadyCell(tobj, stgui.stypelist)
+nrc.name = "R"
+tobj = nrc.cb.topol.slist.object(0)
+{nrc.synlist.append(new SynTypeInstance(nrc.stype.object[0],tobj,0.5,0.5,-1))}
+{g.size(-174.322,174.322,-8.20986,8.20986)}
+{object_pop()}
+{
+ocbox_.map("NetReadyCellGUI[1]", 11, 552, 225.6, 72)
+}
+objref ocbox_
+//End NetReadyCellGUI[1]
+
+
+//Begin NetGUI[0]
+{
+load_file("netbild.hoc")
+}
+{ocbox_ = new NetGUI(1)}
+{object_push(ocbox_)}
+{mapold2new = new Vector()  missing = new List()}
+original_type("M")
+original_type("R")
+original_type("S")
+newnode(2, -132, 55)
+newnode(0, -71, 55)
+newnode(1, -16, 56)
+newedge(0, 1, 0, 0.015, 1)
+newedge(1, 2, 0, 0.0005, 1)
+newedge(2, 1, 1, 0.01, 1)
+{create_ = 1  create1()}
+{g.size(-190.072,190.072,-111.269,111.269)}
+{set_alias(0)}
+{object_pop()}
+{
+ocbox_.map("NetGUI[0]", 21, 445, 214.08, 77.76)
+}
+objref ocbox_
+//End NetGUI[0]
+
+
+//Begin SpikePlot[0] for NetData[0] staf/elburg
+{
+load_file("netbild.hoc")
+}
+{ocbox_ = new SpikePlot(NetData[0],1)}
+{object_push(ocbox_)}
+mode = 1
+spikeplotstyle= 0
+marksize= 4
+markcolor= 1
+useline= 1
+fwindow = 100
+binwidth = 10
+build()
+subset_start=0
+subset_end = 3
+{g.size(0,50,0,4)}
+{object_pop()}
+{
+ocbox_.map("SpikePlot[0] for NetData[0] staf/elburg", 288, 401, 318.72, 367.68)
+}
+objref ocbox_
+//End SpikePlot[0] for NetData[0] staf/elburg
+
+{
+xpanel("Temperature", 0)
+celsius = 6
+xvalue("celsius","celsius", 1,"", 0, 1 )
+xpanel(7,755)
+}
+{
+xpanel("RunControl", 0)
+v_init = -65
+xvalue("Init","v_init", 1,"stdinit()", 1, 1 )
+xbutton("Init & Run","run()")
+xbutton("Stop","stoprun=1")
+runStopAt = 5
+xvalue("Continue til","runStopAt", 1,"{continuerun(runStopAt) stoprun=1}", 1, 1 )
+runStopIn = 1
+xvalue("Continue for","runStopIn", 1,"{continuerun(t + runStopIn) stoprun=1}", 1, 1 )
+xbutton("Single Step","steprun()")
+t = 50
+xvalue("t","t", 2 )
+tstop = 50
+xvalue("Tstop","tstop", 1,"tstop_changed()", 0, 1 )
+dt = 0.025
+xvalue("dt","dt", 1,"setdt()", 0, 1 )
+steps_per_ms = 40
+xvalue("Points plotted/ms","steps_per_ms", 1,"setdt()", 0, 1 )
+screen_update_invl = 0.05
+xvalue("Scrn update invl","screen_update_invl", 1,"", 0, 1 )
+realtime = 0.02
+xvalue("Real Time","realtime", 0,"", 0, 1 )
+xpanel(309,0)
+}
+{
+save_window_ = new Graph(0)
+save_window_.size(0,50,-80,40)
+scene_vector_[10] = save_window_
+{save_window_.view(0, -80, 50, 120, 675, 457, 506.88, 284.8)}
+graphList[0].append(save_window_)
+save_window_.save_name("graphList[0].")
+save_window_.addvar("M_Cell[0].soma.v( 0.5 )", 2, 1, 0.8, 0.9, 2)
+save_window_.addvar("R_Cell[0].soma.v( 0.5 )", 3, 1, 0.8, 0.9, 2)
+}
+{
+xpanel("M_Cell[0].soma(0 - 1) (Parameters)", 0)
+xlabel("M_Cell[0].soma(0 - 1) (Parameters)")
+xlabel("nseg = 1")
+M_Cell[0].soma.L = 30
+xvalue("L","M_Cell[0].soma.L", 1,"define_shape()", 0, 0 )
+NetCell[1].real.soma.Ra = 160
+xvalue("Ra","NetCell[1].real.soma.Ra", 1,"M_Cell[0].soma.Ra += 0", 0, 1 )
+M_Cell[0].soma.diam = 30
+xvalue("diam","M_Cell[0].soma.diam", 1,"", 0, 0 )
+M_Cell[0].soma.cm = 1
+xvalue("cm","M_Cell[0].soma.cm", 1,"", 0, 0 )
+M_Cell[0].soma.gnabar_hh = 0.12
+xvalue("gnabar_hh","M_Cell[0].soma.gnabar_hh", 1,"", 0, 0 )
+M_Cell[0].soma.gkbar_hh = 0.036
+xvalue("gkbar_hh","M_Cell[0].soma.gkbar_hh", 1,"", 0, 0 )
+M_Cell[0].soma.gl_hh = 0.0003
+xvalue("gl_hh","M_Cell[0].soma.gl_hh", 1,"", 0, 0 )
+M_Cell[0].soma.el_hh = -54.3
+xvalue("el_hh","M_Cell[0].soma.el_hh", 1,"", 0, 0 )
+M_Cell[0].soma.ena = 50
+xvalue("ena","M_Cell[0].soma.ena", 1,"", 0, 0 )
+M_Cell[0].soma.ek = -77
+xvalue("ek","M_Cell[0].soma.ek", 1,"", 0, 0 )
+xpanel(1152,55)
+}
+{
+xpanel("M_Cell[0].dend(0 - 1) (Parameters)", 0)
+xlabel("M_Cell[0].dend(0 - 1) (Parameters)")
+xlabel("nseg = 33")
+M_Cell[0].dend.L = 1000
+xvalue("L","M_Cell[0].dend.L", 1,"define_shape()", 0, 0 )
+NetCell[1].real.dend.Ra = 160
+xvalue("Ra","NetCell[1].real.dend.Ra", 1,"M_Cell[0].dend.Ra += 0", 0, 1 )
+M_Cell[0].dend.g_pas = 6.6667e-05
+xvalue("g_pas","M_Cell[0].dend.g_pas", 1,"", 0, 0 )
+M_Cell[0].dend.e_pas = -65
+xvalue("e_pas","M_Cell[0].dend.e_pas", 1,"", 0, 0 )
+M_Cell[0].dend.cm = 1
+xvalue("cm","M_Cell[0].dend.cm", 1,"", 0, 0 )
+M_Cell[0].dend.diam = 2
+xvalue("diam","M_Cell[0].dend.diam", 1,"", 0, 0 )
+xpanel(607,53)
+}
+{
+xpanel("R_Cell[0].soma(0 - 1) (Parameters)", 0)
+xlabel("R_Cell[0].soma(0 - 1) (Parameters)")
+xlabel("nseg = 1")
+R_Cell[0].soma.L = 10
+xvalue("L","R_Cell[0].soma.L", 1,"define_shape()", 0, 0 )
+NetCell[2].real.soma.Ra = 160
+xvalue("Ra","NetCell[2].real.soma.Ra", 1,"R_Cell[0].soma.Ra += 0", 0, 1 )
+R_Cell[0].soma.diam = 10
+xvalue("diam","R_Cell[0].soma.diam", 1,"", 0, 0 )
+R_Cell[0].soma.cm = 1
+xvalue("cm","R_Cell[0].soma.cm", 1,"", 0, 0 )
+R_Cell[0].soma.gnabar_hh = 0.12
+xvalue("gnabar_hh","R_Cell[0].soma.gnabar_hh", 1,"", 0, 0 )
+R_Cell[0].soma.gkbar_hh = 0.036
+xvalue("gkbar_hh","R_Cell[0].soma.gkbar_hh", 1,"", 0, 0 )
+R_Cell[0].soma.gl_hh = 0.0003
+xvalue("gl_hh","R_Cell[0].soma.gl_hh", 1,"", 0, 0 )
+R_Cell[0].soma.el_hh = -54.3
+xvalue("el_hh","R_Cell[0].soma.el_hh", 1,"", 0, 0 )
+R_Cell[0].soma.ena = 50
+xvalue("ena","R_Cell[0].soma.ena", 1,"", 0, 0 )
+R_Cell[0].soma.ek = -77
+xvalue("ek","R_Cell[0].soma.ek", 1,"", 0, 0 )
+xpanel(866,54)
+}
+objectvar scene_vector_[1]
+{doNotify()}
